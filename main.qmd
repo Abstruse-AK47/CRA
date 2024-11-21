@@ -1,0 +1,147 @@
+---
+title: Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data 
+format:
+ html:
+     code-fold: true
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+## Load UCI Credit Approval dataset
+
+```{python}
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data"
+columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", 
+           "EducationLevel", "Ethnicity", "YearsEmployed", 
+           "PriorDefault", "Employed", "CreditScore", 
+           "DriversLicense", "Citizen", "ZipCode", "Income", "Approved"]
+
+# Replace '?' with NaN
+data = pd.read_csv(url, names=columns, na_values="?")
+
+# Display first few rows
+print(data.head())
+
+```
+
+
+```{python}
+# Example: Add noise to 'Income' column
+noise_level = 0.1  # 10% noise
+data["Income_noisy"] = data["Income"] + np.random.normal(0, noise_level * data["Income"].std(), len(data))
+
+# Replace 'Income' with noisy version for simulation
+data["Income"] = data["Income_noisy"]
+data.drop(columns=["Income_noisy"], inplace=True)
+```
+
+```{python}
+# Identify non-numeric columns
+non_numeric_columns = data.select_dtypes(include=["object"]).columns
+print("Non-numeric columns:", non_numeric_columns)
+```
+
+```{python}
+from sklearn.impute import SimpleImputer
+
+# Separate numeric and non-numeric columns
+numeric_data = data.select_dtypes(include=["number"])
+categorical_data = data.select_dtypes(exclude=["number"])
+
+# Impute numeric columns
+imputer_numeric = SimpleImputer(strategy="mean")
+numeric_data_imputed = pd.DataFrame(imputer_numeric.fit_transform(numeric_data), columns=numeric_data.columns)
+
+# Impute categorical columns (e.g., with the most frequent value)
+imputer_categorical = SimpleImputer(strategy="most_frequent")
+categorical_data_imputed = pd.DataFrame(imputer_categorical.fit_transform(categorical_data), columns=categorical_data.columns)
+
+# Combine numeric and categorical data
+data_imputed = pd.concat([numeric_data_imputed, categorical_data_imputed], axis=1)
+
+# Check the final imputed dataset
+print(data_imputed.head())
+```
+
+
+```{python}
+# Calculate prior probabilities
+prior_approved = data["Approved"].value_counts(normalize=True)["+"]
+prior_denied = data["Approved"].value_counts(normalize=True)["-"]
+
+print(f"Prior P(Approved): {prior_approved}, P(Denied): {prior_denied}")
+```
+
+```{python}
+from scipy.stats import norm
+
+# Fit a Gaussian for 'Income' by class
+approved_income = data[data["Approved"] == "+"]["Income"]
+denied_income = data[data["Approved"] == "-"]["Income"]
+
+likelihood_approved = norm(approved_income.mean(), approved_income.std())
+likelihood_denied = norm(denied_income.mean(), denied_income.std())
+```
+
+```{python}
+from scipy.stats import norm
+
+# Fit a Gaussian for 'Income' by class
+approved_income = data[data["Approved"] == "+"]["Income"]
+denied_income = data[data["Approved"] == "-"]["Income"]
+
+likelihood_approved = norm(approved_income.mean(), approved_income.std())
+likelihood_denied = norm(denied_income.mean(), denied_income.std())
+```
+
+```{python}
+# Example: Calculate posterior for a new income value
+def posterior(income, prior, likelihood):
+    return prior * likelihood.pdf(income)
+
+# New applicant with income=5000
+new_income = 5000
+p_approved = posterior(new_income, prior_approved, likelihood_approved)
+p_denied = posterior(new_income, prior_denied, likelihood_denied)
+
+# Normalize posteriors
+total_prob = p_approved + p_denied
+p_approved /= total_prob
+p_denied /= total_prob
+
+print(f"P(Approved|Income): {p_approved}, P(Denied|Income): {p_denied}")
+```
+
+```{python}
+decision = "Approved" if p_approved > p_denied else "Denied"
+print(f"Decision: {decision}")
+```
+
+```{python}
+# Cost matrix: [ [TN, FP], [FN, TP] ]
+cost_matrix = [[0, 1], [5, 0]]  # High cost for FN
+
+# Calculate expected cost
+expected_cost_approved = cost_matrix[1][0] * p_denied  # FN cost
+expected_cost_denied = cost_matrix[0][1] * p_approved  # FP cost
+
+final_decision = "Approved" if expected_cost_approved < expected_cost_denied else "Denied"
+print(f"Cost-sensitive Decision: {final_decision}")
+```
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+# Split data
+X = data_imputed.drop(columns=["Approved"])
+y = data_imputed["Approved"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Implement Bayesian classifier and evaluate on test set...
+```
+
