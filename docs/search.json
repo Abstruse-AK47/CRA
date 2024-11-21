@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "main.html",
+    "href": "main.html",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np"
+  },
+  {
+    "objectID": "main.html#load-uci-credit-approval-dataset",
+    "href": "main.html#load-uci-credit-approval-dataset",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Load UCI Credit Approval dataset",
+    "text": "Load UCI Credit Approval dataset\n\n# Example: Load UCI Credit Approval dataset\nurl = \"https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data\"\ncolumns = [\"Gender\", \"Age\", \"Debt\", \"Married\", \"BankCustomer\", \n           \"EducationLevel\", \"Ethnicity\", \"YearsEmployed\", \n           \"PriorDefault\", \"Employed\", \"CreditScore\", \n           \"DriversLicense\", \"Citizen\", \"ZipCode\", \"Income\", \"Approved\"]\n\n# Replace '?' with NaN\ndata = pd.read_csv(url, names=columns, na_values=\"?\")\n\n# Display first few rows\nprint(data.head())\n\n  Gender    Age   Debt Married BankCustomer EducationLevel Ethnicity  \\\n0      b  30.83  0.000       u            g              w         v   \n1      a  58.67  4.460       u            g              q         h   \n2      a  24.50  0.500       u            g              q         h   \n3      b  27.83  1.540       u            g              w         v   \n4      b  20.17  5.625       u            g              w         v   \n\n   YearsEmployed PriorDefault Employed  CreditScore DriversLicense Citizen  \\\n0           1.25            t        t            1              f       g   \n1           3.04            t        t            6              f       g   \n2           1.50            t        f            0              f       g   \n3           3.75            t        t            5              t       g   \n4           1.71            t        f            0              f       s   \n\n   ZipCode  Income Approved  \n0    202.0       0        +  \n1     43.0     560        +  \n2    280.0     824        +  \n3    100.0       3        +  \n4    120.0       0        +"
+  },
+  {
+    "objectID": "main.html#add-noise-to-income-column",
+    "href": "main.html#add-noise-to-income-column",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Add noise to ‘Income’ column",
+    "text": "Add noise to ‘Income’ column\n\nSimulating Noisy Features: → Added Gaussian noise to numeric columns(eg.,income):\n\n\nnoise_level = 0.1  # 10% noise\ndata[\"Income_noisy\"] = data[\"Income\"] + np.random.normal(0, noise_level * data[\"Income\"].std(), len(data))\n\n# Replace 'Income' with noisy version for simulation\ndata[\"Income\"] = data[\"Income_noisy\"]\ndata.drop(columns=[\"Income_noisy\"], inplace=True)"
+  },
+  {
+    "objectID": "main.html#handling-missing-data",
+    "href": "main.html#handling-missing-data",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Handling Missing Data",
+    "text": "Handling Missing Data\n\nIdentify non-numeric columns\n\n\nnon_numeric_columns = data.select_dtypes(include=[\"object\"]).columns\nprint(\"Non-numeric columns:\", non_numeric_columns)\n\nNon-numeric columns: Index(['Gender', 'Married', 'BankCustomer', 'EducationLevel', 'Ethnicity',\n       'PriorDefault', 'Employed', 'DriversLicense', 'Citizen', 'Approved'],\n      dtype='object')\n\n\n\nSeparate numeric and non-numeric columns and calculate missing data\n\n\nfrom sklearn.impute import SimpleImputer\n\nnumeric_data = data.select_dtypes(include=[\"number\"])\ncategorical_data = data.select_dtypes(exclude=[\"number\"])\n\n# Impute numeric columns\nimputer_numeric = SimpleImputer(strategy=\"mean\")\nnumeric_data_imputed = pd.DataFrame(imputer_numeric.fit_transform(numeric_data), columns=numeric_data.columns)\n\n# Impute categorical columns (e.g., with the most frequent value)\nimputer_categorical = SimpleImputer(strategy=\"most_frequent\")\ncategorical_data_imputed = pd.DataFrame(imputer_categorical.fit_transform(categorical_data), columns=categorical_data.columns)\n\n# Combine numeric and categorical data\ndata_imputed = pd.concat([numeric_data_imputed, categorical_data_imputed], axis=1)\n\n# Check the final imputed dataset\nprint(data_imputed.head())\n\n     Age   Debt  YearsEmployed  CreditScore  ZipCode       Income Gender  \\\n0  30.83  0.000           1.25          1.0    202.0  -605.670335      b   \n1  58.67  4.460           3.04          6.0     43.0   918.235844      a   \n2  24.50  0.500           1.50          0.0    280.0  1179.101858      a   \n3  27.83  1.540           3.75          5.0    100.0  -149.688676      b   \n4  20.17  5.625           1.71          0.0    120.0  -389.039086      b   \n\n  Married BankCustomer EducationLevel Ethnicity PriorDefault Employed  \\\n0       u            g              w         v            t        t   \n1       u            g              q         h            t        t   \n2       u            g              q         h            t        f   \n3       u            g              w         v            t        t   \n4       u            g              w         v            t        f   \n\n  DriversLicense Citizen Approved  \n0              f       g        +  \n1              f       g        +  \n2              f       g        +  \n3              t       g        +  \n4              f       s        +"
+  },
+  {
+    "objectID": "main.html#bayesian-classifier-implementation",
+    "href": "main.html#bayesian-classifier-implementation",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Bayesian Classifier Implementation",
+    "text": "Bayesian Classifier Implementation\n\nDefine Priors: → Calculate prior probabilities\n\n\nprior_approved = data[\"Approved\"].value_counts(normalize=True)[\"+\"]\nprior_denied = data[\"Approved\"].value_counts(normalize=True)[\"-\"]\n\nprint(f\"Prior P(Approved): {prior_approved}, P(Denied): {prior_denied}\")\n\nPrior P(Approved): 0.4449275362318841, P(Denied): 0.5550724637681159\n\n\n\nLikelihood Estimation: → Fit a Gaussian for ‘Income’ by class\n\n\nfrom scipy.stats import norm\n\napproved_income = data[data[\"Approved\"] == \"+\"][\"Income\"]\ndenied_income = data[data[\"Approved\"] == \"-\"][\"Income\"]\n\nlikelihood_approved = norm(approved_income.mean(), approved_income.std())\nlikelihood_denied = norm(denied_income.mean(), denied_income.std())\n\n\nPosterior Calculation: → Using Bayes’ theorum to compute posterior porbabilities:\n\\[P(\\text{Approved}|\\text{Income})=\\frac{P(\\text{Income}|\\text{Approved})\\cdot P(\\text{Approved})}{P(\\text{Income})}\\]\n\n\ndef posterior(income, prior, likelihood):\n    return prior * likelihood.pdf(income)\n\n# New applicant with income=5000\nnew_income = 5000\np_approved = posterior(new_income, prior_approved, likelihood_approved)\np_denied = posterior(new_income, prior_denied, likelihood_denied)\n\n# Normalize posteriors\ntotal_prob = p_approved + p_denied\np_approved /= total_prob\np_denied /= total_prob\n\nprint(f\"P(Approved|Income): {p_approved}, P(Denied|Income): {p_denied}\")\n\nP(Approved|Income): 0.9999982164384229, P(Denied|Income): 1.7835615770204154e-06"
+  },
+  {
+    "objectID": "main.html#decision-rule",
+    "href": "main.html#decision-rule",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Decision Rule",
+    "text": "Decision Rule\n\nMap Decision: → The class with highest posterior probability:\n\n\ndecision = \"Approved\" if p_approved &gt; p_denied else \"Denied\"\nprint(f\"Decision: {decision}\")\n\nDecision: Approved\n\n\n\nCost-Sensitive Decision: → Incoporated a cost matrix(eg - false negatives are more costly):\n\n\n# Cost matrix: [ [TN, FP], [FN, TP] ]\ncost_matrix = [[0, 1], [5, 0]]  # High cost for FN\n\n# Calculate expected cost\nexpected_cost_approved = cost_matrix[1][0] * p_denied  # FN cost\nexpected_cost_denied = cost_matrix[0][1] * p_approved  # FP cost\n\nfinal_decision = \"Approved\" if expected_cost_approved &lt; expected_cost_denied else \"Denied\"\nprint(f\"Cost-sensitive Decision: {final_decision}\")\n\nCost-sensitive Decision: Approved"
+  },
+  {
+    "objectID": "main.html#model-evaulation",
+    "href": "main.html#model-evaulation",
+    "title": "Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data",
+    "section": "Model Evaulation",
+    "text": "Model Evaulation\n\nEvaulated the models performance with metrics like accuracy, precision, and recall.\n\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.naive_bayes import GaussianNB\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\n# Split the data into features and target\nX = data_imputed.drop(columns=[\"Approved\"])\ny = data_imputed[\"Approved\"]\n\n# Identify categorical columns\ncategorical_columns = X.select_dtypes(include=[\"object\"]).columns\n\n# Apply one-hot encoding to categorical columns\nX_encoded = pd.get_dummies(X, columns=categorical_columns, drop_first=True)\n\n\n\n# Split the dataset into training and test sets (70% train, 30% test)\nX_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.3, random_state=42)\n\n# Initialize the Naive Bayes classifier\nmodel = GaussianNB()\n\n# Train the model\nmodel.fit(X_train, y_train)\n\n# Make predictions on the test set\ny_pred = model.predict(X_test)\n\n# Evaluate the model\naccuracy = accuracy_score(y_test, y_pred)\nprecision = precision_score(y_test, y_pred, pos_label='+')\nrecall = recall_score(y_test, y_pred, pos_label='+')\n\n\nDisplay the metrics\n\n\nfrom sklearn.metrics import f1_score\n\nf1 = f1_score(y_test, y_pred, pos_label='+')\nprint(f\"F1 Score: {f1:.4f}\")\nprint(f\"Accuracy: {accuracy:.4f}\")\nprint(f\"Precision: {precision:.4f}\")\nprint(f\"Recall: {recall:.4f}\")\n\nF1 Score: 0.7912\nAccuracy: 0.8164\nPrecision: 0.8471\nRecall: 0.7423"
+  }
+]
