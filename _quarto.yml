@@ -1,0 +1,13 @@
+project:
+    type: website
+    output-dir: docs
+
+website:
+  title: "Credit Risk Assessment"
+  
+
+
+format:
+  html: 
+    theme: cosmo
+    toc: true
