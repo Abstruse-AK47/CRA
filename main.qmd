@@ -34,6 +34,7 @@ print(data.head())
 ## Add noise to 'Income' column
 
 - Simulating Noisy Features:
+
   → Added Gaussian noise to numeric columns(eg.,income):
 
 ```{python}
@@ -80,6 +81,7 @@ print(data_imputed.head())
 ## Bayesian Classifier Implementation 
 
 - Define Priors: 
+
   → Calculate prior probabilities
 
 ```{python}
@@ -90,6 +92,7 @@ print(f"Prior P(Approved): {prior_approved}, P(Denied): {prior_denied}")
 ```
  
 - Likelihood Estimation: 
+
   → Fit a Gaussian for 'Income' by class
 
 ```{python}
@@ -104,6 +107,7 @@ likelihood_denied = norm(denied_income.mean(), denied_income.std())
 
 
 - Posterior Calculation: 
+
   → Using Bayes' theorum to compute posterior porbabilities:
 
     $$P(\text{Approved}|\text{Income})=\frac{P(\text{Income}|\text{Approved})\cdot P(\text{Approved})}{P(\text{Income})}$$
@@ -128,6 +132,7 @@ print(f"P(Approved|Income): {p_approved}, P(Denied|Income): {p_denied}")
 ## Decision Rule
 
 - Map Decision:
+
   → The class with highest posterior probability:
 
 ```{python}
@@ -136,6 +141,7 @@ print(f"Decision: {decision}")
 ```
 
 - Cost-Sensitive Decision:
+
   → Incoporated a cost matrix(eg - false negatives are more costly):
   
 ```{python}

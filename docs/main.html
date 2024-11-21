@@ -175,13 +175,13 @@ window.Quarto = {
 </header>
 
 
-<div id="04690bf6" class="cell" data-execution_count="1">
+<div id="4b9a5c46" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="load-uci-credit-approval-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-uci-credit-approval-dataset">Load UCI Credit Approval dataset</h2>
-<div id="61840a46" class="cell" data-execution_count="2">
+<div id="48790a56" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Load UCI Credit Approval dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">"Gender"</span>, <span class="st">"Age"</span>, <span class="st">"Debt"</span>, <span class="st">"Married"</span>, <span class="st">"BankCustomer"</span>, </span>
@@ -221,9 +221,10 @@ window.Quarto = {
 <section id="add-noise-to-income-column" class="level2">
 <h2 class="anchored" data-anchor-id="add-noise-to-income-column">Add noise to ‘Income’ column</h2>
 <ul>
-<li>Simulating Noisy Features: → Added Gaussian noise to numeric columns(eg.,income):</li>
+<li><p>Simulating Noisy Features:</p>
+<p>→ Added Gaussian noise to numeric columns(eg.,income):</p></li>
 </ul>
-<div id="337e1292" class="cell" data-execution_count="3">
+<div id="1b98d7e6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>noise_level <span class="op">=</span> <span class="fl">0.1</span>  <span class="co"># 10% noise</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Income_noisy"</span>] <span class="op">=</span> data[<span class="st">"Income"</span>] <span class="op">+</span> np.random.normal(<span class="dv">0</span>, noise_level <span class="op">*</span> data[<span class="st">"Income"</span>].std(), <span class="bu">len</span>(data))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -237,7 +238,7 @@ window.Quarto = {
 <ul>
 <li>Identify non-numeric columns</li>
 </ul>
-<div id="b89cb2ca" class="cell" data-execution_count="4">
+<div id="1cc12459" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>non_numeric_columns <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>]).columns</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Non-numeric columns:"</span>, non_numeric_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -249,7 +250,7 @@ window.Quarto = {
 <ul>
 <li>Separate numeric and non-numeric columns and calculate missing data</li>
 </ul>
-<div id="9f6c5ac5" class="cell" data-execution_count="5">
+<div id="7f04d1cc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>numeric_data <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"number"</span>])</span>
@@ -269,12 +270,12 @@ window.Quarto = {
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the final imputed dataset</span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_imputed.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     Age   Debt  YearsEmployed  CreditScore  ZipCode       Income Gender  \
-0  30.83  0.000           1.25          1.0    202.0  -605.670335      b   
-1  58.67  4.460           3.04          6.0     43.0   918.235844      a   
-2  24.50  0.500           1.50          0.0    280.0  1179.101858      a   
-3  27.83  1.540           3.75          5.0    100.0  -149.688676      b   
-4  20.17  5.625           1.71          0.0    120.0  -389.039086      b   
+<pre><code>     Age   Debt  YearsEmployed  CreditScore  ZipCode      Income Gender  \
+0  30.83  0.000           1.25          1.0    202.0 -598.744753      b   
+1  58.67  4.460           3.04          6.0     43.0  364.602591      a   
+2  24.50  0.500           1.50          0.0    280.0  453.610304      a   
+3  27.83  1.540           3.75          5.0    100.0 -595.618465      b   
+4  20.17  5.625           1.71          0.0    120.0 -131.032592      b   
 
   Married BankCustomer EducationLevel Ethnicity PriorDefault Employed  \
 0       u            g              w         v            t        t   
@@ -295,9 +296,10 @@ window.Quarto = {
 <section id="bayesian-classifier-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="bayesian-classifier-implementation">Bayesian Classifier Implementation</h2>
 <ul>
-<li>Define Priors: → Calculate prior probabilities</li>
+<li><p>Define Priors:</p>
+<p>→ Calculate prior probabilities</p></li>
 </ul>
-<div id="f1297b0b" class="cell" data-execution_count="6">
+<div id="fe7b87b1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>prior_approved <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"+"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>prior_denied <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"-"</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -307,9 +309,10 @@ window.Quarto = {
 </div>
 </div>
 <ul>
-<li>Likelihood Estimation: → Fit a Gaussian for ‘Income’ by class</li>
+<li><p>Likelihood Estimation:</p>
+<p>→ Fit a Gaussian for ‘Income’ by class</p></li>
 </ul>
-<div id="9654adf0" class="cell" data-execution_count="7">
+<div id="993ea08c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>approved_income <span class="op">=</span> data[data[<span class="st">"Approved"</span>] <span class="op">==</span> <span class="st">"+"</span>][<span class="st">"Income"</span>]</span>
@@ -319,10 +322,11 @@ window.Quarto = {
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>likelihood_denied <span class="op">=</span> norm(denied_income.mean(), denied_income.std())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Posterior Calculation: → Using Bayes’ theorum to compute posterior porbabilities:</p>
+<li><p>Posterior Calculation:</p>
+<p>→ Using Bayes’ theorum to compute posterior porbabilities:</p>
 <p><span class="math display">\[P(\text{Approved}|\text{Income})=\frac{P(\text{Income}|\text{Approved})\cdot P(\text{Approved})}{P(\text{Income})}\]</span></p></li>
 </ul>
-<div id="90378053" class="cell" data-execution_count="8">
+<div id="d21999db" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> posterior(income, prior, likelihood):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prior <span class="op">*</span> likelihood.pdf(income)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -338,16 +342,17 @@ window.Quarto = {
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Approved|Income): </span><span class="sc">{</span>p_approved<span class="sc">}</span><span class="ss">, P(Denied|Income): </span><span class="sc">{</span>p_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(Approved|Income): 0.9999982164384229, P(Denied|Income): 1.7835615770204154e-06</code></pre>
+<pre><code>P(Approved|Income): 0.9999997848938376, P(Denied|Income): 2.1510616237482148e-07</code></pre>
 </div>
 </div>
 </section>
 <section id="decision-rule" class="level2">
 <h2 class="anchored" data-anchor-id="decision-rule">Decision Rule</h2>
 <ul>
-<li>Map Decision: → The class with highest posterior probability:</li>
+<li><p>Map Decision:</p>
+<p>→ The class with highest posterior probability:</p></li>
 </ul>
-<div id="63f5baab" class="cell" data-execution_count="9">
+<div id="dbcc93e3" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> p_approved <span class="op">&gt;</span> p_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision: </span><span class="sc">{</span>decision<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -355,9 +360,10 @@ window.Quarto = {
 </div>
 </div>
 <ul>
-<li>Cost-Sensitive Decision: → Incoporated a cost matrix(eg - false negatives are more costly):</li>
+<li><p>Cost-Sensitive Decision:</p>
+<p>→ Incoporated a cost matrix(eg - false negatives are more costly):</p></li>
 </ul>
-<div id="c5e3b496" class="cell" data-execution_count="10">
+<div id="75911af3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost matrix: [ [TN, FP], [FN, TP] ]</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cost_matrix <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">5</span>, <span class="dv">0</span>]]  <span class="co"># High cost for FN</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -377,7 +383,7 @@ window.Quarto = {
 <ul>
 <li>Evaulated the models performance with metrics like accuracy, precision, and recall.</li>
 </ul>
-<div id="01fa923a" class="cell" data-execution_count="11">
+<div id="f9f216f6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score</span>
@@ -414,7 +420,7 @@ window.Quarto = {
 <ul>
 <li>Display the metrics</li>
 </ul>
-<div id="023a3006" class="cell" data-execution_count="12">
+<div id="20f8e506" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span>
@@ -423,10 +429,10 @@ window.Quarto = {
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>F1 Score: 0.7912
-Accuracy: 0.8164
-Precision: 0.8471
-Recall: 0.7423</code></pre>
+<pre><code>F1 Score: 0.7845
+Accuracy: 0.8116
+Precision: 0.8452
+Recall: 0.7320</code></pre>
 </div>
 </div>
 
