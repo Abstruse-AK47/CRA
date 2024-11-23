@@ -112,6 +112,7 @@ import missingno as msno
 
 # Visualize missing data
 msno.matrix(data)
+plt.gcf().set_size_inches(8, 5)
 plt.show()
 
 ```

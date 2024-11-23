@@ -181,7 +181,7 @@ window.Quarto = {
 </header>
 
 
-<div id="0e53eebc" class="cell" data-execution_count="1">
+<div id="2e47d4fc" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -190,7 +190,7 @@ window.Quarto = {
 </div>
 <section id="load-uci-credit-approval-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-uci-credit-approval-dataset">Load UCI Credit Approval dataset</h2>
-<div id="4805265d" class="cell" data-execution_count="2">
+<div id="6eba2d90" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data"</span></span>
@@ -204,7 +204,7 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 
 
@@ -339,7 +339,7 @@ window.Quarto = {
 <li><p>Simulating Noisy Features:</p>
 <p>→ Added Gaussian noise to numeric columns(eg.,income):</p></li>
 </ul>
-<div id="0a4286ef" class="cell" data-execution_count="3">
+<div id="56aa18ec" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>noise_level <span class="op">=</span> <span class="fl">0.1</span>  <span class="co"># 10% noise</span></span>
@@ -356,13 +356,13 @@ window.Quarto = {
 <ul>
 <li>Identify non-numeric columns</li>
 </ul>
-<div id="a1363eae" class="cell" data-execution_count="4">
+<div id="5c551b0b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>non_numeric_columns <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>]).columns</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>non_numeric_columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>Index(['Gender', 'Married', 'BankCustomer', 'EducationLevel', 'Ethnicity',
        'PriorDefault', 'Employed', 'DriversLicense', 'Citizen', 'Approved'],
       dtype='object')</code></pre>
@@ -371,7 +371,7 @@ window.Quarto = {
 <ul>
 <li>Separate numeric and non-numeric columns and calculate missing data</li>
 </ul>
-<div id="a1388f1c" class="cell" data-execution_count="5">
+<div id="b4dd5f30" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
@@ -393,7 +393,7 @@ window.Quarto = {
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the final imputed dataset</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>data_imputed.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 
 
@@ -427,7 +427,7 @@ window.Quarto = {
 <td>1.25</td>
 <td>1.0</td>
 <td>202.0</td>
-<td>-1317.942659</td>
+<td>-283.077148</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -446,7 +446,7 @@ window.Quarto = {
 <td>3.04</td>
 <td>6.0</td>
 <td>43.0</td>
-<td>187.302150</td>
+<td>530.238175</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -465,7 +465,7 @@ window.Quarto = {
 <td>1.50</td>
 <td>0.0</td>
 <td>280.0</td>
-<td>1473.530678</td>
+<td>736.073781</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -484,7 +484,7 @@ window.Quarto = {
 <td>3.75</td>
 <td>5.0</td>
 <td>100.0</td>
-<td>-54.282047</td>
+<td>525.183750</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -503,7 +503,7 @@ window.Quarto = {
 <td>1.71</td>
 <td>0.0</td>
 <td>120.0</td>
-<td>-363.372516</td>
+<td>1146.085595</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -587,13 +587,14 @@ Figure&nbsp;2: Pairplot of Features by Approval Status
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>msno.matrix(data)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.gcf().set_size_inches(<span class="dv">8</span>, <span class="dv">5</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-polar2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-polar2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="main_files/figure-html/fig-polar2-output-1.png" width="1963" height="913" class="figure-img">
+<img src="main_files/figure-html/fig-polar2-output-1.png" width="699" height="543" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Missing Values Matrix
@@ -609,7 +610,7 @@ Figure&nbsp;3: Missing Values Matrix
 <li><p>Define Priors:</p>
 <p>→ Calculate prior probabilities</p></li>
 </ul>
-<div id="41497f18" class="cell" data-execution_count="9">
+<div id="e12c9177" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>prior_approved <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"+"</span>]</span>
@@ -625,7 +626,7 @@ Figure&nbsp;3: Missing Values Matrix
 <li><p>Likelihood Estimation:</p>
 <p>→ Fit a Gaussian for ‘Income’ by class</p></li>
 </ul>
-<div id="d8ad5a5a" class="cell" data-execution_count="10">
+<div id="16fb8607" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -642,7 +643,7 @@ Figure&nbsp;3: Missing Values Matrix
 <p>→ Using Bayes’ theorum to compute posterior porbabilities:</p>
 <p><span class="math display">\[P(\text{Approved}|\text{Income})=\frac{P(\text{Income}|\text{Approved})\cdot P(\text{Approved})}{P(\text{Income})}\]</span></p></li>
 </ul>
-<div id="31f2875b" class="cell" data-execution_count="11">
+<div id="74426e39" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> posterior(income, prior, likelihood):</span>
@@ -661,7 +662,7 @@ Figure&nbsp;3: Missing Values Matrix
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Approved|Income): </span><span class="sc">{</span>p_approved<span class="sc">}</span><span class="ss">, P(Denied|Income): </span><span class="sc">{</span>p_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(Approved|Income): 0.9999987556897033, P(Denied|Income): 1.2443102967852707e-06</code></pre>
+<pre><code>P(Approved|Income): 0.9999991099260153, P(Denied|Income): 8.900739848043693e-07</code></pre>
 </div>
 </div>
 </section>
@@ -671,7 +672,7 @@ Figure&nbsp;3: Missing Values Matrix
 <li><p>Map Decision:</p>
 <p>→ The class with highest posterior probability:</p></li>
 </ul>
-<div id="dbc32438" class="cell" data-execution_count="12">
+<div id="3dab4b44" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> p_approved <span class="op">&gt;</span> p_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
@@ -685,7 +686,7 @@ Figure&nbsp;3: Missing Values Matrix
 <li><p>Cost-Sensitive Decision:</p>
 <p>→ Incoporated a cost matrix(eg - false negatives are more costly):</p></li>
 </ul>
-<div id="c3b46ab6" class="cell" data-execution_count="13">
+<div id="cb0b141a" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost matrix: [ [TN, FP], [FN, TP] ]</span></span>
@@ -834,7 +835,7 @@ Figure&nbsp;6: Confusion Matrix
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<div id="c2d770c8" class="cell" data-execution_count="17">
+<div id="afb49f48" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
@@ -846,10 +847,10 @@ Figure&nbsp;6: Confusion Matrix
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>F1 Score: 0.7978
-Accuracy: 0.8213
-Precision: 0.8488
-Recall: 0.7526</code></pre>
+<pre><code>F1 Score: 0.7912
+Accuracy: 0.8164
+Precision: 0.8471
+Recall: 0.7423</code></pre>
 </div>
 </div>
 <div id="cell-fig-polar6" class="cell" data-execution_count="18">
