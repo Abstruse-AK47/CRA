@@ -52,19 +52,10 @@ data.drop(columns=["Income_noisy"], inplace=True)
 
 ## Finding Relevant and Handling Missing Data 
 
-- Since the data we have does not include information on categorical(non numeric) variables, we have to rely on numerical data for the scope of this project.
-
-- Identify numerical columns
-
-```{python}
-numerical_columns = data.select_dtypes(include=["number"]).columns
-print(numerical_columns)
-```
-
 - Visualize Missing Values
 
 ```{python}
-#| label: fig-polar2
+#| label: fig-polar
 #| fig-cap: Missing Values Matrix
 
 
@@ -97,12 +88,10 @@ data_imputed = pd.concat([numeric_data_imputed, categorical_data_imputed], axis=
 data_imputed.head()
 ```
 
-
-
 - Distribution of target variable
 
 ```{python}
-#| label: fig-polar
+#| label: fig-polar1
 #| fig-cap: Distribution of Target Variable (Approved) 
 
 

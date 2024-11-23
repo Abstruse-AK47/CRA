@@ -178,7 +178,7 @@ window.Quarto = {
 </header>
 
 
-<div id="9283bde9" class="cell" data-execution_count="1">
+<div id="4642fcf5" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame Libraries</span></span>
@@ -193,7 +193,7 @@ window.Quarto = {
 </div>
 <section id="load-uci-credit-approval-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-uci-credit-approval-dataset">Load UCI Credit Approval dataset</h2>
-<div id="f2901a31" class="cell" data-execution_count="2">
+<div id="df031ff1" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data"</span></span>
@@ -207,7 +207,7 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="181">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -342,7 +342,7 @@ window.Quarto = {
 <li><p>Simulating Noisy Features:</p>
 <p>→ Added Gaussian noise to numeric columns(eg.,income):</p></li>
 </ul>
-<div id="6b72efb4" class="cell" data-execution_count="3">
+<div id="fbdff96a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>noise_level <span class="op">=</span> <span class="fl">0.1</span>  <span class="co"># 10% noise</span></span>
@@ -357,37 +357,23 @@ window.Quarto = {
 <section id="finding-relevant-and-handling-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="finding-relevant-and-handling-missing-data">Finding Relevant and Handling Missing Data</h2>
 <ul>
-<li><p>Since the data we have does not include information on categorical(non numeric) variables, we have to rely on numerical data for the scope of this project.</p></li>
-<li><p>Identify numerical columns</p></li>
-</ul>
-<div id="592b220a" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"number"</span>]).columns</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numerical_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Index(['Age', 'Debt', 'YearsEmployed', 'CreditScore', 'ZipCode', 'Income'], dtype='object')</code></pre>
-</div>
-</div>
-<ul>
 <li>Visualize Missing Values</li>
 </ul>
-<div id="cell-fig-polar2" class="cell" data-execution_count="5">
+<div id="cell-fig-polar" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>msno.matrix(data)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.gcf().set_size_inches(<span class="dv">7</span>, <span class="dv">5</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>msno.matrix(data)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.gcf().set_size_inches(<span class="dv">7</span>, <span class="dv">5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-polar2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-polar2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="main_files/figure-html/fig-polar2-output-1.png" width="624" height="543" class="figure-img">
+<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="main_files/figure-html/fig-polar-output-1.png" width="624" height="543" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Missing Values Matrix
 </figcaption>
 </figure>
@@ -397,29 +383,29 @@ Figure&nbsp;1: Missing Values Matrix
 <ul>
 <li>Separate numeric and non-numeric columns and calculate missing data</li>
 </ul>
-<div id="1d5d59bf" class="cell" data-execution_count="6">
+<div id="76bb6848" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>numeric_data <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"number"</span>])</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>categorical_data <span class="op">=</span> data.select_dtypes(exclude<span class="op">=</span>[<span class="st">"number"</span>])</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute numeric columns</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>imputer_numeric <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"mean"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>numeric_data_imputed <span class="op">=</span> pd.DataFrame(imputer_numeric.fit_transform(numeric_data), columns<span class="op">=</span>numeric_data.columns)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute categorical columns (e.g., with the most frequent value)</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>imputer_categorical <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>categorical_data_imputed <span class="op">=</span> pd.DataFrame(imputer_categorical.fit_transform(categorical_data), columns<span class="op">=</span>categorical_data.columns)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine numeric and categorical data</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>data_imputed <span class="op">=</span> pd.concat([numeric_data_imputed, categorical_data_imputed], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the final imputed dataset</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>data_imputed.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>numeric_data <span class="op">=</span> data.select_dtypes(include<span class="op">=</span>[<span class="st">"number"</span>])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>categorical_data <span class="op">=</span> data.select_dtypes(exclude<span class="op">=</span>[<span class="st">"number"</span>])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute numeric columns</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>imputer_numeric <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>numeric_data_imputed <span class="op">=</span> pd.DataFrame(imputer_numeric.fit_transform(numeric_data), columns<span class="op">=</span>numeric_data.columns)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute categorical columns (e.g., with the most frequent value)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>imputer_categorical <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>categorical_data_imputed <span class="op">=</span> pd.DataFrame(imputer_categorical.fit_transform(categorical_data), columns<span class="op">=</span>categorical_data.columns)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine numeric and categorical data</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>data_imputed <span class="op">=</span> pd.concat([numeric_data_imputed, categorical_data_imputed], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the final imputed dataset</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>data_imputed.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="185">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -453,7 +439,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.25</td>
 <td>1.0</td>
 <td>202.0</td>
-<td>495.503183</td>
+<td>231.373994</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -472,7 +458,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>3.04</td>
 <td>6.0</td>
 <td>43.0</td>
-<td>1652.228386</td>
+<td>825.707011</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -491,7 +477,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.50</td>
 <td>0.0</td>
 <td>280.0</td>
-<td>670.104196</td>
+<td>810.577333</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -510,7 +496,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>3.75</td>
 <td>5.0</td>
 <td>100.0</td>
-<td>-300.646435</td>
+<td>-212.782594</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -529,7 +515,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.71</td>
 <td>0.0</td>
 <td>120.0</td>
-<td>-895.352913</td>
+<td>-649.560740</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -550,22 +536,22 @@ Figure&nbsp;1: Missing Values Matrix
 <ul>
 <li>Distribution of target variable</li>
 </ul>
-<div id="cell-fig-polar" class="cell" data-execution_count="7">
+<div id="cell-fig-polar1" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution of the target variable</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data_imputed, x<span class="op">=</span><span class="st">"Approved"</span>,hue <span class="op">=</span> <span class="st">"Approved"</span>, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Approval Status"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution of the target variable</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data_imputed, x<span class="op">=</span><span class="st">"Approved"</span>,hue <span class="op">=</span> <span class="st">"Approved"</span>, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Approval Status"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-polar1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="main_files/figure-html/fig-polar-output-1.png" width="593" height="432" class="figure-img">
+<div aria-describedby="fig-polar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="main_files/figure-html/fig-polar1-output-1.png" width="593" height="432" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Distribution of Target Variable (Approved)
 </figcaption>
 </figure>
@@ -579,13 +565,13 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Define Priors:</p>
 <p>→ Calculate prior probabilities</p></li>
 </ul>
-<div id="4772e721" class="cell" data-execution_count="8">
+<div id="346d3909" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>prior_approved <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"+"</span>]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>prior_denied <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"-"</span>]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Prior P(Approved): </span><span class="sc">{</span>prior_approved<span class="sc">}</span><span class="ss">, P(Denied): </span><span class="sc">{</span>prior_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prior_approved <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"+"</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prior_denied <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"-"</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Prior P(Approved): </span><span class="sc">{</span>prior_approved<span class="sc">}</span><span class="ss">, P(Denied): </span><span class="sc">{</span>prior_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Prior P(Approved): 0.4449275362318841, P(Denied): 0.5550724637681159</code></pre>
@@ -595,16 +581,16 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Likelihood Estimation:</p>
 <p>→ Fit a Gaussian for ‘Income’ by class</p></li>
 </ul>
-<div id="4bfc87a5" class="cell" data-execution_count="9">
+<div id="b6698f36" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>approved_income <span class="op">=</span> data[data[<span class="st">"Approved"</span>] <span class="op">==</span> <span class="st">"+"</span>][<span class="st">"Income"</span>]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>denied_income <span class="op">=</span> data[data[<span class="st">"Approved"</span>] <span class="op">==</span> <span class="st">"-"</span>][<span class="st">"Income"</span>]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>likelihood_approved <span class="op">=</span> norm(approved_income.mean(), approved_income.std())</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>likelihood_denied <span class="op">=</span> norm(denied_income.mean(), denied_income.std())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>approved_income <span class="op">=</span> data[data[<span class="st">"Approved"</span>] <span class="op">==</span> <span class="st">"+"</span>][<span class="st">"Income"</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>denied_income <span class="op">=</span> data[data[<span class="st">"Approved"</span>] <span class="op">==</span> <span class="st">"-"</span>][<span class="st">"Income"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>likelihood_approved <span class="op">=</span> norm(approved_income.mean(), approved_income.std())</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>likelihood_denied <span class="op">=</span> norm(denied_income.mean(), denied_income.std())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
@@ -612,37 +598,37 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <p>→ Using Bayes’ theorum to compute posterior porbabilities:</p>
 <p><span class="math display">\[P(\text{Approved}|\text{Income})=\frac{P(\text{Income}|\text{Approved})\cdot P(\text{Approved})}{P(\text{Income})}\]</span></p></li>
 </ul>
-<div id="b61b66d4" class="cell" data-execution_count="10">
+<div id="24e12dd2" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> posterior(income, prior, likelihood):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prior <span class="op">*</span> likelihood.pdf(income)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># New applicant with income=5000</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>new_income <span class="op">=</span> <span class="dv">5000</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>p_approved <span class="op">=</span> posterior(new_income, prior_approved, likelihood_approved)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>p_denied <span class="op">=</span> posterior(new_income, prior_denied, likelihood_denied)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize posteriors</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>total_prob <span class="op">=</span> p_approved <span class="op">+</span> p_denied</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>p_approved <span class="op">/=</span> total_prob</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>p_denied <span class="op">/=</span> total_prob</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Approved|Income): </span><span class="sc">{</span>p_approved<span class="sc">}</span><span class="ss">, P(Denied|Income): </span><span class="sc">{</span>p_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> posterior(income, prior, likelihood):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prior <span class="op">*</span> likelihood.pdf(income)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># New applicant with income=5000</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>new_income <span class="op">=</span> <span class="dv">5000</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>p_approved <span class="op">=</span> posterior(new_income, prior_approved, likelihood_approved)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>p_denied <span class="op">=</span> posterior(new_income, prior_denied, likelihood_denied)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize posteriors</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>total_prob <span class="op">=</span> p_approved <span class="op">+</span> p_denied</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>p_approved <span class="op">/=</span> total_prob</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>p_denied <span class="op">/=</span> total_prob</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Approved|Income): </span><span class="sc">{</span>p_approved<span class="sc">}</span><span class="ss">, P(Denied|Income): </span><span class="sc">{</span>p_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(Approved|Income): 0.9999993041685493, P(Denied|Income): 6.958314505503845e-07</code></pre>
+<pre><code>P(Approved|Income): 0.999999290011965, P(Denied|Income): 7.099880350438106e-07</code></pre>
 </div>
 </div>
 <ul>
 <li><p>Map Decision:</p>
 <p>→ The class with highest posterior probability:</p></li>
 </ul>
-<div id="da488b34" class="cell" data-execution_count="11">
+<div id="55a00d8b" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> p_approved <span class="op">&gt;</span> p_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision: </span><span class="sc">{</span>decision<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> p_approved <span class="op">&gt;</span> p_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision: </span><span class="sc">{</span>decision<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Decision: Approved</code></pre>
@@ -652,18 +638,18 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Cost-Sensitive Decision:</p>
 <p>→ Incoporated a cost matrix(eg - false negatives are more costly):</p></li>
 </ul>
-<div id="e2361938" class="cell" data-execution_count="12">
+<div id="d128a10c" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost matrix: [ [TN, FP], [FN, TP] ]</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cost_matrix <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">5</span>, <span class="dv">0</span>]]  <span class="co"># High cost for FN</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># expected cost</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>expected_cost_approved <span class="op">=</span> cost_matrix[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">*</span> p_denied  <span class="co"># FN cost</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>expected_cost_denied <span class="op">=</span> cost_matrix[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">*</span> p_approved  <span class="co"># FP cost</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>final_decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> expected_cost_approved <span class="op">&lt;</span> expected_cost_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cost-sensitive Decision: </span><span class="sc">{</span>final_decision<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost matrix: [ [TN, FP], [FN, TP] ]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cost_matrix <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">5</span>, <span class="dv">0</span>]]  <span class="co"># High cost for FN</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># expected cost</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>expected_cost_approved <span class="op">=</span> cost_matrix[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">*</span> p_denied  <span class="co"># FN cost</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>expected_cost_denied <span class="op">=</span> cost_matrix[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">*</span> p_approved  <span class="co"># FP cost</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>final_decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> expected_cost_approved <span class="op">&lt;</span> expected_cost_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cost-sensitive Decision: </span><span class="sc">{</span>final_decision<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cost-sensitive Decision: Approved</code></pre>
@@ -675,62 +661,62 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <ul>
 <li>Evaulated the models performance with metrics like accuracy, precision, and recall.</li>
 </ul>
-<div id="ae1e06ab" class="cell" data-execution_count="13">
+<div id="66897afc" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into features and target</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data_imputed.drop(columns<span class="op">=</span>[<span class="st">"Approved"</span>])</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data_imputed[<span class="st">"Approved"</span>]</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify categorical columns</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>]).columns</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply one-hot encoding to categorical columns</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>X_encoded <span class="op">=</span> pd.get_dummies(X, columns<span class="op">=</span>categorical_columns, drop_first<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset into training and test sets (70% train, 30% test)</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_encoded, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the Naive Bayes classifier</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GaussianNB()</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set</span></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model</span></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into features and target</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data_imputed.drop(columns<span class="op">=</span>[<span class="st">"Approved"</span>])</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data_imputed[<span class="st">"Approved"</span>]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify categorical columns</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>]).columns</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply one-hot encoding to categorical columns</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>X_encoded <span class="op">=</span> pd.get_dummies(X, columns<span class="op">=</span>categorical_columns, drop_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset into training and test sets (70% train, 30% test)</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_encoded, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the Naive Bayes classifier</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GaussianNB()</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<div id="00450581" class="cell" data-execution_count="14">
+<div id="ac2cca97" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, y_pred, pos_label<span class="op">=</span><span class="st">'+'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>F1 Score: 0.7802
-Accuracy: 0.8068
-Precision: 0.8353
+<pre><code>F1 Score: 0.7845
+Accuracy: 0.8116
+Precision: 0.8452
 Recall: 0.7320</code></pre>
 </div>
 </div>
