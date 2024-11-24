@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data – Credit Risk Assessment</title>
+<title>Credit Risk Assesment using Bayesian Decision Thoery with noisy Financial Data – Credit Risk Assessment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data</h1>
+<h1 class="title">Credit Risk Assesment using Bayesian Decision Thoery with noisy Financial Data</h1>
 </div>
 
 
@@ -178,7 +178,7 @@ window.Quarto = {
 </header>
 
 
-<div id="4642fcf5" class="cell" data-execution_count="1">
+<div id="43798f3f" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DataFrame Libraries</span></span>
@@ -193,7 +193,7 @@ window.Quarto = {
 </div>
 <section id="load-uci-credit-approval-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-uci-credit-approval-dataset">Load UCI Credit Approval dataset</h2>
-<div id="df031ff1" class="cell" data-execution_count="2">
+<div id="858d9c7a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data"</span></span>
@@ -342,7 +342,7 @@ window.Quarto = {
 <li><p>Simulating Noisy Features:</p>
 <p>→ Added Gaussian noise to numeric columns(eg.,income):</p></li>
 </ul>
-<div id="fbdff96a" class="cell" data-execution_count="3">
+<div id="0b9caca6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>noise_level <span class="op">=</span> <span class="fl">0.1</span>  <span class="co"># 10% noise</span></span>
@@ -383,7 +383,7 @@ Figure&nbsp;1: Missing Values Matrix
 <ul>
 <li>Separate numeric and non-numeric columns and calculate missing data</li>
 </ul>
-<div id="76bb6848" class="cell" data-execution_count="5">
+<div id="b24859d8" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
@@ -439,7 +439,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.25</td>
 <td>1.0</td>
 <td>202.0</td>
-<td>231.373994</td>
+<td>4.810348</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -458,7 +458,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>3.04</td>
 <td>6.0</td>
 <td>43.0</td>
-<td>825.707011</td>
+<td>1022.136743</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -477,7 +477,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.50</td>
 <td>0.0</td>
 <td>280.0</td>
-<td>810.577333</td>
+<td>959.511849</td>
 <td>a</td>
 <td>u</td>
 <td>g</td>
@@ -496,7 +496,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>3.75</td>
 <td>5.0</td>
 <td>100.0</td>
-<td>-212.782594</td>
+<td>351.777150</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -515,7 +515,7 @@ Figure&nbsp;1: Missing Values Matrix
 <td>1.71</td>
 <td>0.0</td>
 <td>120.0</td>
-<td>-649.560740</td>
+<td>-82.030524</td>
 <td>b</td>
 <td>u</td>
 <td>g</td>
@@ -565,7 +565,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Define Priors:</p>
 <p>→ Calculate prior probabilities</p></li>
 </ul>
-<div id="346d3909" class="cell" data-execution_count="7">
+<div id="bdb2a87f" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prior_approved <span class="op">=</span> data[<span class="st">"Approved"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)[<span class="st">"+"</span>]</span>
@@ -581,7 +581,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Likelihood Estimation:</p>
 <p>→ Fit a Gaussian for ‘Income’ by class</p></li>
 </ul>
-<div id="b6698f36" class="cell" data-execution_count="8">
+<div id="d8de5f21" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -598,7 +598,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <p>→ Using Bayes’ theorum to compute posterior porbabilities:</p>
 <p><span class="math display">\[P(\text{Approved}|\text{Income})=\frac{P(\text{Income}|\text{Approved})\cdot P(\text{Approved})}{P(\text{Income})}\]</span></p></li>
 </ul>
-<div id="24e12dd2" class="cell" data-execution_count="9">
+<div id="962f394c" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> posterior(income, prior, likelihood):</span>
@@ -617,14 +617,14 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Approved|Income): </span><span class="sc">{</span>p_approved<span class="sc">}</span><span class="ss">, P(Denied|Income): </span><span class="sc">{</span>p_denied<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(Approved|Income): 0.999999290011965, P(Denied|Income): 7.099880350438106e-07</code></pre>
+<pre><code>P(Approved|Income): 0.9999969560966311, P(Denied|Income): 3.0439033689365954e-06</code></pre>
 </div>
 </div>
 <ul>
 <li><p>Map Decision:</p>
 <p>→ The class with highest posterior probability:</p></li>
 </ul>
-<div id="55a00d8b" class="cell" data-execution_count="10">
+<div id="8cb2a230" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>decision <span class="op">=</span> <span class="st">"Approved"</span> <span class="cf">if</span> p_approved <span class="op">&gt;</span> p_denied <span class="cf">else</span> <span class="st">"Denied"</span></span>
@@ -638,7 +638,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <li><p>Cost-Sensitive Decision:</p>
 <p>→ Incoporated a cost matrix(eg - false negatives are more costly):</p></li>
 </ul>
-<div id="d128a10c" class="cell" data-execution_count="11">
+<div id="30914c98" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost matrix: [ [TN, FP], [FN, TP] ]</span></span>
@@ -661,7 +661,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <ul>
 <li>Evaulated the models performance with metrics like accuracy, precision, and recall.</li>
 </ul>
-<div id="66897afc" class="cell" data-execution_count="12">
+<div id="59cc045e" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -702,7 +702,7 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<div id="ac2cca97" class="cell" data-execution_count="13">
+<div id="38ee36e4" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
@@ -714,9 +714,9 @@ Figure&nbsp;2: Distribution of Target Variable (Approved)
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>F1 Score: 0.7845
-Accuracy: 0.8116
-Precision: 0.8452
+<pre><code>F1 Score: 0.7802
+Accuracy: 0.8068
+Precision: 0.8353
 Recall: 0.7320</code></pre>
 </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: Credit Risk Assesment using bayesian Decision Thoery with noisy Financial Data 
+title: Credit Risk Assesment using Bayesian Decision Thoery with noisy Financial Data 
 format:
  html:
      code-fold: true
@@ -87,6 +87,8 @@ data_imputed = pd.concat([numeric_data_imputed, categorical_data_imputed], axis=
 # Check the final imputed dataset
 data_imputed.head()
 ```
+
+
 
 - Distribution of target variable
 
